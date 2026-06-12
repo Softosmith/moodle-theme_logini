@@ -1,0 +1,963 @@
+// =============================================================================
+// Logini — post.scss
+// Custom component styles applied AFTER Boost compiles.
+// =============================================================================
+
+// ---------------------------------------------------------------------------
+// Design Tokens
+// ---------------------------------------------------------------------------
+:root {
+    --logini-brand:              #{$primary};
+    --logini-brand-dark:         #{darken($primary, 8%)};
+    --logini-surface:            #f9f9f9;
+    --logini-surface-bright:     #ffffff;
+    --logini-surface-container:  #eeeeee;
+    --logini-outline:            #cfc4c5;
+    --logini-outline-variant:    #cfc4c5;
+    --logini-on-surface:         #1b1b1b;
+    --logini-on-surface-variant: #444748;
+    --logini-error:              #ba1a1a;
+    --logini-card-thumb-bg:      #fcb742;
+    --logini-card-thumb-icon-bg: #e09e31;
+}
+
+// ---------------------------------------------------------------------------
+// Login Page — Outer Shell
+// ---------------------------------------------------------------------------
+body.path-login {
+    // Remove Boost's default login centering
+    background: var(--logini-surface) !important;
+
+    #page-wrapper,
+    #page,
+    #page-content,
+    #region-main-box,
+    #region-main {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: none !important;
+        width: 100% !important;
+        height: 100vh !important;
+    }
+
+    .login-wrapper,
+    .login-container {
+        all: unset;
+    }
+
+    footer {
+        display: none !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Login Page — Two-Panel Layout
+// ---------------------------------------------------------------------------
+.logini-login-page {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--logini-surface);
+}
+
+// ── Left panel ──────────────────────────────────────────────────────────────
+.logini-login-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3rem 5rem;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--logini-surface);
+}
+
+// ── Right panel ─────────────────────────────────────────────────────────────
+.logini-login-right {
+    width: 50%;
+    background: var(--logini-brand);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5rem;
+    color: #fff;
+
+    // Subtle grid pattern overlay
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(to right,  rgba(255,255,255,.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+    }
+}
+
+.logini-bg-grid { display: none; } // rendered by ::before pseudo
+
+// ── Responsive ──────────────────────────────────────────────────────────────
+@media (max-width: 1023px) {
+    .logini-login-left {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .logini-login-right {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .logini-login-left {
+        padding: 2rem 3rem;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Logo
+// ---------------------------------------------------------------------------
+.logini-login-logo {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 3rem;
+}
+
+.logini-login-logo-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--logini-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: .9rem;
+}
+
+.logini-login-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    color: var(--logini-on-surface);
+}
+
+// ---------------------------------------------------------------------------
+// Form Container
+// ---------------------------------------------------------------------------
+.logini-login-form-wrap {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 3rem;
+}
+
+// ---------------------------------------------------------------------------
+// Heading Block
+// ---------------------------------------------------------------------------
+.logini-login-heading-block {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.logini-login-avatar-icon {
+    width: 4rem;
+    height: 4rem;
+    background: var(--logini-surface-container);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.75rem;
+    color: var(--logini-on-surface-variant);
+}
+
+.logini-login-title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    color: var(--logini-on-surface);
+    margin: 0 0 .5rem;
+}
+
+.logini-login-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--logini-on-surface-variant);
+    margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Social Login Buttons
+// ---------------------------------------------------------------------------
+.logini-social-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+    margin-bottom: 2rem;
+}
+
+.logini-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 1rem;
+    border: 1px solid var(--logini-outline-variant);
+    border-radius: .5rem;
+    background: var(--logini-surface-bright);
+    color: var(--logini-on-surface);
+    font-size: .875rem;
+    font-weight: 500;
+    letter-spacing: .01em;
+    cursor: pointer;
+    transition: background .15s;
+    text-decoration: none;
+
+    &:hover {
+        background: var(--logini-surface-container);
+        color: var(--logini-on-surface);
+        text-decoration: none;
+    }
+}
+
+.logini-social-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+// ---------------------------------------------------------------------------
+// OR Divider
+// ---------------------------------------------------------------------------
+.logini-or-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.logini-or-line {
+    flex: 1;
+    height: 1px;
+    background: var(--logini-outline-variant);
+}
+
+.logini-or-text {
+    font-size: .875rem;
+    color: var(--logini-on-surface-variant);
+    flex-shrink: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Moodle Form Overrides
+// Style Moodle's rendered form elements to match the design.
+// Moodle 5.x login form uses .loginbox > .loginpanel structure.
+// ---------------------------------------------------------------------------
+.logini-login-form-wrap {
+
+    // ── Hide Moodle's default heading / card chrome ──────────────────────
+    .loginbox,
+    .loginpanel {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .loginbox > h2,
+    .loginpanel > h2,
+    .loginsub > h2,
+    #page-login-index h2,
+    .page-header-headings h1,
+    .login-heading:not(#guestlogin ~ .login-heading):not(.login-heading + *) {
+        display: none !important;
+    }
+
+    // ── Remove card/panel styling Boost adds ─────────────────────────────
+    .card,
+    .card-body {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+
+    // ── Form group spacing ────────────────────────────────────────────────
+    .form-group,
+    .mb-3 {
+        margin-bottom: 1.25rem !important;
+    }
+
+    // ── Input labels ─────────────────────────────────────────────────────
+    label {
+        font-size: .875rem;
+        font-weight: 500;
+        color: var(--logini-on-surface);
+        margin-bottom: .35rem;
+        display: block;
+    }
+
+    // ── Text / password / email inputs ───────────────────────────────────
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+        width: 100% !important;
+        padding: .75rem 1rem !important;
+        border: 1px solid var(--logini-outline-variant) !important;
+        border-radius: .5rem !important;
+        background: var(--logini-surface) !important;
+        color: var(--logini-on-surface) !important;
+        font-size: 1rem !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        outline: none !important;
+        box-shadow: none !important;
+        transition: border-color .2s, box-shadow .2s !important;
+
+        &::placeholder {
+            color: var(--logini-on-surface-variant) !important;
+        }
+
+        &:focus {
+            border-color: var(--logini-brand) !important;
+            box-shadow: 0 0 0 3px rgba(15, 61, 50, .15) !important;
+        }
+    }
+
+    // ── Custom password eye toggle ────────────────────────────────────────
+    .logini-password-wrap {
+        position: relative;
+
+        input[type="password"],
+        input[type="text"] {
+            padding-right: 3rem !important;
+        }
+
+        .logini-password-toggle {
+            position: absolute;
+            right: .75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            padding: .25rem;
+            color: var(--logini-on-surface-variant);
+            cursor: pointer;
+            line-height: 1;
+            z-index: 4;
+
+            &:hover { color: var(--logini-on-surface); }
+            i { font-size: 1rem; }
+        }
+    }
+
+    // ── Password toggle wrapper (Moodle adds a show/hide button) ─────────
+    .input-group {
+        position: relative;
+
+        input[type="password"],
+        input[type="text"] {
+            border-radius: .5rem !important;
+        }
+
+        .input-group-append {
+            position: absolute;
+            right: .75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 4;
+
+            .btn {
+                background: transparent !important;
+                border: none !important;
+                padding: .25rem !important;
+                color: var(--logini-on-surface-variant);
+                box-shadow: none !important;
+
+                &:hover { color: var(--logini-on-surface); }
+            }
+        }
+    }
+
+    // ── Remember username checkbox row ────────────────────────────────────
+    .rememberpassword,
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        margin: .25rem 0 1rem;
+
+        input[type="checkbox"] {
+            width: 1rem !important;
+            height: 1rem !important;
+            border-radius: .25rem !important;
+            border: 1px solid var(--logini-outline-variant) !important;
+            accent-color: var(--logini-brand);
+            flex-shrink: 0;
+        }
+
+        label {
+            font-size: .875rem;
+            font-weight: 500;
+            color: var(--logini-on-surface-variant);
+            margin: 0;
+        }
+    }
+
+    // ── Remember + Forgot password on one row ────────────────────────────
+    .login-form-remember-forgot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem !important;
+
+        .form-check {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-check-input {
+            margin-top: 0 !important;
+        }
+
+        .form-check-label {
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .login-forgot-link {
+            font-size: .875rem;
+            font-weight: 600;
+            color: var(--logini-brand) !important;
+            text-decoration: none;
+            white-space: nowrap;
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    .form-check-inline + a,
+    .rememberpassword ~ a,
+    a.forgotten {
+        font-size: .875rem;
+        font-weight: 600;
+        color: var(--logini-brand) !important;
+        text-decoration: none;
+
+        &:hover { text-decoration: underline; }
+    }
+
+    // Inline row for checkbox + forgot password
+    .login-remember-forgot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    // ── Submit / Login button ─────────────────────────────────────────────
+    [type="submit"],
+    input[type="submit"],
+    .btn-primary {
+        width: 100% !important;
+        padding: 1rem !important;
+        background: var(--logini-brand) !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: .5rem !important;
+        font-size: .875rem !important;
+        font-weight: 600 !important;
+        letter-spacing: .01em !important;
+        cursor: pointer !important;
+        transition: background .2s !important;
+        box-shadow: none !important;
+        margin-top: 0 !important;
+
+        &:hover,
+        &:focus {
+            background: var(--logini-brand-dark) !important;
+            color: #fff !important;
+        }
+    }
+
+    // ── "Don't have an account? Sign Up" link ─────────────────────────────
+    .signup-link,
+    .login-signup-inline,
+    p > a[href*="signup"],
+    .subcontent.signup {
+        text-align: center;
+        margin-top: 2rem;
+        font-size: 1rem;
+        color: var(--logini-on-surface-variant);
+
+        a {
+            color: var(--logini-brand) !important;
+            font-weight: 600;
+            text-decoration: none;
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    // ── "Access as a guest" outlined button ──────────────────────────────
+    .logini-guest-btn {
+        width: 100% !important;
+        padding: .85rem 1rem !important;
+        border: 1.5px solid var(--logini-brand) !important;
+        border-radius: .5rem !important;
+        background: transparent !important;
+        color: var(--logini-brand) !important;
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+        font-family: 'Inter', system-ui, sans-serif !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: .5rem !important;
+        cursor: pointer !important;
+        transition: background .2s, color .2s !important;
+        box-shadow: none !important;
+
+        .fa {
+            font-size: 1.05rem;
+        }
+
+        &:hover,
+        &:focus {
+            background: rgba(15, 61, 50, .06) !important;
+            color: var(--logini-brand-dark) !important;
+            border-color: var(--logini-brand-dark) !important;
+        }
+    }
+
+    // ── Cookie notice text ────────────────────────────────────────────────
+    .login-cookie-notice {
+        display: flex;
+        align-items: flex-start;
+        gap: .45rem;
+        margin-top: 1.5rem;
+        font-size: .78rem;
+        color: var(--logini-on-surface-variant);
+        line-height: 1.45;
+
+        .fa-shield {
+            flex-shrink: 0;
+            margin-top: .1rem;
+            font-size: .85rem;
+        }
+
+        .login-cookie-link {
+            color: var(--logini-on-surface) !important;
+            font-weight: 600;
+            text-decoration: none;
+
+            &:hover { text-decoration: underline; }
+        }
+    }
+
+    // ── Error / notification messages ─────────────────────────────────────
+    .alert,
+    .loginerrors {
+        border-radius: .5rem;
+        font-size: .875rem;
+        margin-bottom: 1rem;
+    }
+
+    // ── OAuth2 / identity provider buttons (rendered inside main_content) ─
+    // Hide them since we show our own social buttons above
+    .potentialidps,
+    .login-identityproviders {
+        display: none !important;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Login Footer
+// ---------------------------------------------------------------------------
+.logini-login-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--logini-on-surface-variant);
+    padding-top: 1rem;
+}
+
+.logini-lang-btn {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--logini-on-surface-variant);
+    padding: 0;
+    transition: color .15s;
+
+    &:hover { color: var(--logini-on-surface); }
+
+    .fa { font-size: .7rem; }
+}
+
+// ---------------------------------------------------------------------------
+// Right Panel — Cards Scene
+// ---------------------------------------------------------------------------
+.logini-cards-scene {
+    position: relative;
+    width: 100%;
+    max-width: 28rem;
+    height: 20rem;
+    margin-bottom: 4rem;
+    z-index: 1;
+}
+
+// ── Shared card base ─────────────────────────────────────────────────────────
+.logini-card {
+    position: absolute;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    color: var(--logini-on-surface);
+    overflow: hidden;
+}
+
+// ── Background card (progress / bar chart) ──────────────────────────────────
+.logini-card-back {
+    top: 0;
+    left: 1rem;
+    width: 18rem;
+    padding: 1.5rem;
+    transform: rotate(-2deg);
+    z-index: 1;
+    opacity: .92;
+}
+
+.logini-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.logini-card-label {
+    font-size: .75rem;
+    font-weight: 600;
+    color: var(--logini-on-surface-variant);
+}
+
+.logini-card-avatar-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.logini-card-avatar-img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 2px solid var(--logini-brand);
+    object-fit: cover;
+    margin-bottom: .5rem;
+}
+
+.logini-card-name {
+    font-size: .875rem;
+    font-weight: 700;
+    margin: 0 0 .1rem;
+    color: var(--logini-on-surface);
+}
+
+.logini-card-role {
+    font-size: .625rem;
+    font-weight: 700;
+    color: var(--logini-on-surface-variant);
+    margin: 0;
+}
+
+.logini-bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: .5rem;
+    height: 5rem;
+    padding: 0 .5rem;
+}
+
+.logini-bar {
+    flex: 1;
+    background: var(--logini-brand);
+    border-radius: 2px 2px 0 0;
+}
+
+// ── Foreground card (course preview) ────────────────────────────────────────
+.logini-card-front {
+    top: 3rem;
+    right: 0;
+    width: 21.25rem;
+    padding: 1rem;
+    z-index: 2;
+}
+
+.logini-card-thumb {
+    width: 100%;
+    height: 8rem;
+    background: var(--logini-card-thumb-bg);
+    border-radius: .75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+
+    // dot pattern inside thumb
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255,255,255,.2) 1px, transparent 1px);
+        background-size: 10px 10px;
+    }
+}
+
+.logini-card-thumb-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.logini-card-thumb-icon-wrap {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--logini-card-thumb-icon-bg);
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.logini-card-course-title {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--logini-on-surface);
+    margin: 0 0 .5rem;
+}
+
+.logini-card-course-desc {
+    font-size: .625rem;
+    font-weight: 700;
+    line-height: 1.6;
+    color: var(--logini-on-surface-variant);
+    margin: 0 0 1rem;
+}
+
+.logini-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .75rem;
+    border-top: 1px solid var(--logini-outline-variant);
+    font-size: .625rem;
+    font-weight: 700;
+    color: var(--logini-on-surface-variant);
+}
+
+.logini-card-meta-left {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.logini-meta-tag {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.logini-meta-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: var(--logini-outline-variant);
+    display: inline-block;
+}
+
+.logini-card-rating {
+    color: var(--logini-brand);
+    font-weight: 700;
+    font-size: .625rem;
+
+    small {
+        color: var(--logini-on-surface-variant);
+        font-weight: 700;
+    }
+}
+
+// ── Floating decorative icon bubbles ────────────────────────────────────────
+.logini-float-icon {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: .75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    z-index: 3;
+}
+
+.logini-float-icon--blue {
+    background: #42bcfc;
+    top: -1rem;
+    right: 3rem;
+    animation: loginiBounceBlue 1.6s ease-in-out infinite;
+}
+
+.logini-float-icon--purple {
+    background: #a855f7;
+    bottom: 2rem;
+    left: 0;
+    animation: loginiBouncePurple 1.6s ease-in-out infinite;
+    animation-delay: .45s;
+}
+
+.logini-float-icon--orange {
+    background: #f97316;
+    bottom: -1.5rem;
+    left: 33%;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: .6rem;
+    border-radius: .375rem;
+    animation: loginiBounceOrange 1.6s ease-in-out infinite;
+    animation-delay: .9s;
+}
+
+// ---------------------------------------------------------------------------
+// Right Panel — Brand Copy
+// ---------------------------------------------------------------------------
+.logini-brand-slider {
+    text-align: center;
+    max-width: 28rem;
+    position: relative;
+    z-index: 1;
+    margin-top: 3rem;
+}
+
+.logini-brand-headline {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+    color: #fff;
+    margin: 0 0 1rem;
+}
+
+.logini-brand-body {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, .85);
+    margin: 0 0 2rem;
+}
+
+// ── Slides ───────────────────────────────────────────────────────────────────
+.logini-slide {
+    display: none;
+}
+
+.logini-slide-image-wrap {
+    margin-bottom: 2rem;
+    img {
+        max-width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        max-height: 20rem;
+        object-fit: cover;
+    }
+}
+
+.logini-slide.logini-slide--active {
+    display: block;
+    animation: loginiFadeIn .5s ease;
+}
+
+@keyframes loginiFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes loginiBounceBlue {
+    0%, 100% { transform: rotate(12deg)  translateY(0);     }
+    40%       { transform: rotate(12deg)  translateY(-10px); }
+    60%       { transform: rotate(12deg)  translateY(-5px);  }
+}
+
+@keyframes loginiBouncePurple {
+    0%, 100% { transform: rotate(-12deg) translateY(0);     }
+    40%       { transform: rotate(-12deg) translateY(-10px); }
+    60%       { transform: rotate(-12deg) translateY(-5px);  }
+}
+
+@keyframes loginiBounceOrange {
+    0%, 100% { transform: rotate(45deg)  translateY(0);    }
+    40%       { transform: rotate(45deg)  translateY(-8px); }
+    60%       { transform: rotate(45deg)  translateY(-4px); }
+}
+
+// ── Pagination dots ──────────────────────────────────────────────────────────
+.logini-pagination-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.logini-dot {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,.4);
+    display: inline-block;
+    transition: background .2s;
+    cursor: pointer;
+
+    &.logini-dot--active {
+        background: #fff;
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Right Panel — Bottom Gradient Overlay
+// ---------------------------------------------------------------------------
+.logini-right-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--logini-brand-dark), transparent);
+    opacity: .5;
+    pointer-events: none;
+    z-index: 0;
+}
