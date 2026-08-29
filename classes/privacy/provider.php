@@ -15,18 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Logini theme.
+ * Privacy Subsystem implementation for theme_logini.
  *
  * @package    theme_logini
  * @copyright  2026 Softosmith.com and Asad Ali
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_logini\privacy;
+
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version      = 2026082900;
-$plugin->requires     = 2025041400; // Moodle 5.0.0.
-$plugin->component    = 'theme_logini';
-$plugin->dependencies = ['theme_boost' => 2025041400];
-$plugin->maturity     = MATURITY_STABLE;
-$plugin->release      = '1.0.1';
+/**
+ * The Logini theme does not store any personal data.
+ *
+ * @copyright  2026 Softosmith.com and Asad Ali
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class provider implements \core_privacy\local\metadata\null_provider {
+
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
+    }
+}

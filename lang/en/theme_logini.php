@@ -32,6 +32,7 @@ $string['rawscss']      = 'Raw SCSS';
 $string['rawscss_desc'] = 'Use this field to add custom SCSS that will be appended at the end of the theme styles.';
 $string['rawscsspre']   = 'Raw initial SCSS';
 $string['rawscsspre_desc'] = 'SCSS variables you enter here are injected before everything else and can override built-in defaults.';
+$string['privacy:metadata']   = 'The Logini theme does not store any personal data.';
 
 // Login page admin settings.
 $string['loginsettings']              = 'Login';
