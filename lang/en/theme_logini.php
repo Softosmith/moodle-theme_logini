@@ -50,7 +50,7 @@ $string['forgotpasswordheadingtext_desc'] = 'Heading displayed on the forgot pas
 $string['forgotpasswordsubtitletext'] = 'Forgot password page subtitle';
 $string['forgotpasswordsubtitletext_desc'] = 'Subtitle line on the forgot password page. Leave blank to use the default "Enter your details to reset your password".';
 $string['loginfootertext']            = 'Footer text';
-$string['loginfootertext_desc']       = 'Custom copyright / footer text on the login page. Leave blank to show "© year sitename".';
+$string['loginfootertext_desc']       = 'Custom copyright / footer text on the login page. Leave blank to show "(c) year sitename".';
 $string['loginlogotype']              = 'Logo display';
 $string['loginlogotype_desc']         = 'Controls what is shown in the logo area at the top-left of the login page.';
 $string['loginlogotype_iconname']     = 'Icon + site name';
@@ -112,7 +112,7 @@ $string['forgotpasswordsubtitletext_default'] = 'Enter your details to reset you
 $string['loginslide1heading_default'] = 'Kick-Start Your Career With Our Industry Leading Courses';
 $string['loginslide1body_default']    = 'Start your new career today with our selection of accredited editing courses. Learn from our world-class course content, engage with our expert tutor team, and enter the industry immediately with our work guarantee.';
 $string['loginslide2heading_default'] = 'Learn From World-Class Instructors at Your Own Pace';
-$string['loginslide2body_default']    = 'Access hundreds of expert-led lessons, hands-on projects, and real-world assignments. Study whenever suits you — our flexible online format fits around your life, not the other way around.';
+$string['loginslide2body_default']    = 'Access hundreds of expert-led lessons, hands-on projects, and real-world assignments. Study whenever suits you -- our flexible online format fits around your life, not the other way around.';
 $string['loginslide3heading_default'] = 'Join Thousands of Graduates Already Working in the Industry';
 $string['loginslide3body_default']    = 'Our students go on to work with top studios, agencies, and broadcasters worldwide. With our career support team and work guarantee, your first role is closer than you think.';
 

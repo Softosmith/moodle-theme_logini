@@ -23,7 +23,7 @@
  */
 /**
  * Returns the main SCSS content for the theme.
- * Concatenates: pre.scss → preset file → post.scss
+ * Concatenates: pre.scss -> preset file -> post.scss
  *
  * @param theme_config $theme
  * @return string

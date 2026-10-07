@@ -1,5 +1,5 @@
 // =============================================================================
-// Logini — post.scss
+// Logini -- post.scss
 // Custom component styles applied AFTER Boost compiles.
 // =============================================================================
 
@@ -72,7 +72,7 @@ body.path-login.theme-dark {
 }
 
 // ---------------------------------------------------------------------------
-// Login Page — Outer Shell
+// Login Page -- Outer Shell
 // ---------------------------------------------------------------------------
 body.path-login {
     // Remove Boost's default login centering
@@ -101,7 +101,7 @@ body.path-login {
 }
 
 // ---------------------------------------------------------------------------
-// Login Page — Two-Panel Layout
+// Login Page -- Two-Panel Layout
 // ---------------------------------------------------------------------------
 .logini-login-page {
     display: flex;
@@ -112,7 +112,7 @@ body.path-login {
     background: var(--logini-surface);
 }
 
-// ── Left panel ──────────────────────────────────────────────────────────────
+// -- Left panel --------------------------------------------------------------
 .logini-login-left {
     width: 50%;
     display: flex;
@@ -124,7 +124,7 @@ body.path-login {
     background: var(--logini-surface);
 }
 
-// ── Right panel ─────────────────────────────────────────────────────────────
+// -- Right panel -------------------------------------------------------------
 .logini-login-right {
     width: 50%;
     background: var(--logini-brand);
@@ -153,7 +153,7 @@ body.path-login {
 
 .logini-bg-grid { display: none; } // rendered by ::before pseudo
 
-// ── Responsive ──────────────────────────────────────────────────────────────
+// -- Responsive --------------------------------------------------------------
 @media (max-width: 1023px) {
     .logini-login-left {
         width: 100%;
@@ -319,7 +319,7 @@ body.path-login {
 // ---------------------------------------------------------------------------
 .logini-login-form-wrap {
 
-    // ── Hide Moodle's default heading / card chrome ──────────────────────
+    // -- Hide Moodle's default heading / card chrome ----------------------
     .loginbox,
     .loginpanel {
         background: transparent !important;
@@ -338,7 +338,7 @@ body.path-login {
         display: none !important;
     }
 
-    // ── Remove card/panel styling Boost adds ─────────────────────────────
+    // -- Remove card/panel styling Boost adds -----------------------------
     .card,
     .card-body {
         background: transparent !important;
@@ -347,13 +347,13 @@ body.path-login {
         padding: 0 !important;
     }
 
-    // ── Form group spacing ────────────────────────────────────────────────
+    // -- Form group spacing ------------------------------------------------
     .form-group,
     .mb-3 {
         margin-bottom: 1.25rem !important;
     }
 
-    // ── Input labels ─────────────────────────────────────────────────────
+    // -- Input labels -----------------------------------------------------
     label {
         font-size: .875rem;
         font-weight: 500;
@@ -362,7 +362,7 @@ body.path-login {
         display: block;
     }
 
-    // ── Text / password / email inputs ───────────────────────────────────
+    // -- Text / password / email inputs -----------------------------------
     input[type="text"],
     input[type="password"],
     input[type="email"] {
@@ -388,7 +388,7 @@ body.path-login {
         }
     }
 
-    // ── Password toggle wrapper (core/togglesensitive and input-group) ───
+    // -- Password toggle wrapper (core/togglesensitive and input-group) ---
     .toggle-sensitive-wrapper,
     .input-group {
         position: relative;
@@ -428,7 +428,7 @@ body.path-login {
         }
     }
 
-    // ── Remember username checkbox row ────────────────────────────────────
+    // -- Remember username checkbox row ------------------------------------
     .rememberpassword,
     .form-check {
         display: flex;
@@ -453,7 +453,7 @@ body.path-login {
         }
     }
 
-    // ── Remember + Forgot password on one row ────────────────────────────
+    // -- Remember + Forgot password on one row ----------------------------
     .login-form-remember-forgot {
         display: flex;
         align-items: center;
@@ -507,7 +507,7 @@ body.path-login {
         margin-bottom: 1.5rem;
     }
 
-    // ── Submit / Login button ─────────────────────────────────────────────
+    // -- Submit / Login button ---------------------------------------------
     [type="submit"],
     input[type="submit"],
     .btn-primary {
@@ -532,7 +532,7 @@ body.path-login {
         }
     }
 
-    // ── "Don't have an account? Sign Up" link ─────────────────────────────
+    // -- "Don't have an account? Sign Up" link -----------------------------
     .signup-link,
     .login-signup-inline,
     p > a[href*="signup"],
@@ -551,7 +551,7 @@ body.path-login {
         }
     }
 
-    // ── "Access as a guest" outlined button ──────────────────────────────
+    // -- "Access as a guest" outlined button ------------------------------
     .logini-guest-btn {
         width: 100% !important;
         padding: .85rem 1rem !important;
@@ -582,7 +582,7 @@ body.path-login {
         }
     }
 
-    // ── Cookie notice text ────────────────────────────────────────────────
+    // -- Cookie notice text ------------------------------------------------
     .login-cookie-notice {
         display: flex;
         align-items: flex-start;
@@ -607,7 +607,7 @@ body.path-login {
         }
     }
 
-    // ── Error / notification messages ─────────────────────────────────────
+    // -- Error / notification messages -------------------------------------
     .alert,
     .loginerrors {
         border-radius: .5rem;
@@ -615,7 +615,7 @@ body.path-login {
         margin-bottom: 1rem;
     }
 
-    // ── Self-registration / authentication instructions ───────────────────
+    // -- Self-registration / authentication instructions -------------------
     .login-instructions {
         margin: 1.5rem 0;
         padding: 1rem;
@@ -635,7 +635,7 @@ body.path-login {
         }
     }
 
-    // ── OAuth2 / identity provider buttons (rendered inside main_content) ─
+    // -- OAuth2 / identity provider buttons (rendered inside main_content) -
     // Hide them since we show our own social buttons above
     .potentialidps,
     .login-identityproviders {
@@ -675,7 +675,7 @@ body.path-login {
 }
 
 // ---------------------------------------------------------------------------
-// Right Panel — Cards Scene
+// Right Panel -- Cards Scene
 // ---------------------------------------------------------------------------
 .logini-cards-scene {
     position: relative;
@@ -686,7 +686,7 @@ body.path-login {
     z-index: 1;
 }
 
-// ── Shared card base ─────────────────────────────────────────────────────────
+// -- Shared card base ---------------------------------------------------------
 .logini-card {
     position: absolute;
     background: var(--logini-surface-bright);
@@ -696,7 +696,7 @@ body.path-login {
     overflow: hidden;
 }
 
-// ── Background card (progress / bar chart) ──────────────────────────────────
+// -- Background card (progress / bar chart) ----------------------------------
 .logini-card-back {
     top: 0;
     left: 1rem;
@@ -764,7 +764,7 @@ body.path-login {
     border-radius: 2px 2px 0 0;
 }
 
-// ── Foreground card (course preview) ────────────────────────────────────────
+// -- Foreground card (course preview) ----------------------------------------
 .logini-card-front {
     top: 3rem;
     right: 0;
@@ -870,7 +870,7 @@ body.path-login {
     }
 }
 
-// ── Floating decorative icon bubbles ────────────────────────────────────────
+// -- Floating decorative icon bubbles ----------------------------------------
 .logini-float-icon {
     position: absolute;
     width: 2rem;
@@ -913,7 +913,7 @@ body.path-login {
 }
 
 // ---------------------------------------------------------------------------
-// Right Panel — Brand Copy
+// Right Panel -- Brand Copy
 // ---------------------------------------------------------------------------
 .logini-brand-slider {
     text-align: center;
@@ -939,7 +939,7 @@ body.path-login {
     margin: 0 0 2rem;
 }
 
-// ── Slides ───────────────────────────────────────────────────────────────────
+// -- Slides -------------------------------------------------------------------
 .logini-slide {
     display: none;
 }
@@ -983,7 +983,7 @@ body.path-login {
     60%       { transform: rotate(45deg)  translateY(-4px); }
 }
 
-// ── Pagination dots ──────────────────────────────────────────────────────────
+// -- Pagination dots ----------------------------------------------------------
 .logini-pagination-dots {
     display: flex;
     align-items: center;
@@ -1006,7 +1006,7 @@ body.path-login {
 }
 
 // ---------------------------------------------------------------------------
-// Right Panel — Bottom Gradient Overlay
+// Right Panel -- Bottom Gradient Overlay
 // ---------------------------------------------------------------------------
 .logini-right-gradient {
     position: absolute;

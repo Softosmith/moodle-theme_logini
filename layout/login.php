@@ -38,11 +38,9 @@ $logotype = $s->loginlogotype ?? 'icon_name';
 $socialbuttons = [];
 $authsequence = get_enabled_auth_plugins();
 if (in_array('oauth2', $authsequence)) {
-    $authplugin = get_auth_plugin('oauth2');
-    $wantsurl = isset($SESSION->wantsurl) ? $SESSION->wantsurl : '';
-    $idplist = $authplugin->loginpage_idp_list($wantsurl);
+    $idplist = auth_plugin_base::get_identity_providers(['oauth2']);
 
-    // Build a map of issuer ID → servicetype so we can identify each provider.
+    // Build a map of issuer ID to servicetype so we can identify each provider.
     $issuers = \core\oauth2\api::get_all_issuers(true);
     $issuermap = [];
     foreach ($issuers as $issuer) {
