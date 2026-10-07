@@ -31,7 +31,6 @@ $THEME->parents         = ['boost'];
 $THEME->usefallback     = true;
 $THEME->sheets          = [];
 $THEME->editor_sheets   = [];
-$THEME->editor_scss     = ['editor'];
 
 $THEME->scss = function($theme) {
     return theme_logini_get_main_scss_content($theme);

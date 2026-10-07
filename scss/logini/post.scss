@@ -4,6 +4,41 @@
 // =============================================================================
 
 // ---------------------------------------------------------------------------
+// Self-hosted Fonts (Inter)
+// ---------------------------------------------------------------------------
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('[[font:theme_logini|inter-400.woff2]]') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('[[font:theme_logini|inter-500.woff2]]') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('[[font:theme_logini|inter-600.woff2]]') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('[[font:theme_logini|inter-700.woff2]]') format('woff2');
+}
+
+// ---------------------------------------------------------------------------
 // Design Tokens
 // ---------------------------------------------------------------------------
 :root {
@@ -19,6 +54,21 @@
     --logini-error:              #ba1a1a;
     --logini-card-thumb-bg:      #fcb742;
     --logini-card-thumb-icon-bg: #e09e31;
+}
+
+// ---------------------------------------------------------------------------
+// Dark Mode Design Tokens (Moodle 5.3+ Boost Dark Mode)
+// ---------------------------------------------------------------------------
+[data-bs-theme="dark"],
+[data-bs-theme="dark"] body.path-login,
+body.path-login.theme-dark {
+    --logini-surface:            #181a1b;
+    --logini-surface-bright:     #222527;
+    --logini-surface-container:  #2b2e31;
+    --logini-outline:            #494e52;
+    --logini-outline-variant:    #3f4347;
+    --logini-on-surface:         #f0f2f4;
+    --logini-on-surface-variant: #bcc3c9;
 }
 
 // ---------------------------------------------------------------------------
@@ -338,57 +388,42 @@ body.path-login {
         }
     }
 
-    // ── Custom password eye toggle ────────────────────────────────────────
-    .logini-password-wrap {
-        position: relative;
-
-        input[type="password"],
-        input[type="text"] {
-            padding-right: 3rem !important;
-        }
-
-        .logini-password-toggle {
-            position: absolute;
-            right: .75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            padding: .25rem;
-            color: var(--logini-on-surface-variant);
-            cursor: pointer;
-            line-height: 1;
-            z-index: 4;
-
-            &:hover { color: var(--logini-on-surface); }
-            i { font-size: 1rem; }
-        }
-    }
-
-    // ── Password toggle wrapper (Moodle adds a show/hide button) ─────────
+    // ── Password toggle wrapper (core/togglesensitive and input-group) ───
+    .toggle-sensitive-wrapper,
     .input-group {
         position: relative;
+        display: flex;
+        width: 100%;
 
         input[type="password"],
         input[type="text"] {
             border-radius: .5rem !important;
+            padding-right: 3rem !important;
+            flex: 1 1 auto;
         }
 
-        .input-group-append {
+        .toggle-sensitive-btn,
+        .input-group-append .btn {
             position: absolute;
             right: .75rem;
             top: 50%;
             transform: translateY(-50%);
             z-index: 4;
+            background: transparent !important;
+            border: none !important;
+            padding: .25rem !important;
+            color: var(--logini-on-surface-variant) !important;
+            box-shadow: none !important;
+            cursor: pointer;
 
-            .btn {
-                background: transparent !important;
-                border: none !important;
-                padding: .25rem !important;
-                color: var(--logini-on-surface-variant);
-                box-shadow: none !important;
+            &:hover {
+                color: var(--logini-on-surface) !important;
+            }
 
-                &:hover { color: var(--logini-on-surface); }
+            .icon,
+            i {
+                font-size: 1rem;
+                margin: 0;
             }
         }
     }
@@ -580,6 +615,26 @@ body.path-login {
         margin-bottom: 1rem;
     }
 
+    // ── Self-registration / authentication instructions ───────────────────
+    .login-instructions {
+        margin: 1.5rem 0;
+        padding: 1rem;
+        background: var(--logini-surface-container);
+        border: 1px solid var(--logini-outline-variant);
+        border-radius: .5rem;
+        font-size: .875rem;
+        line-height: 1.5;
+        color: var(--logini-on-surface-variant);
+
+        .login-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--logini-on-surface);
+            margin-bottom: .5rem;
+            display: block !important;
+        }
+    }
+
     // ── OAuth2 / identity provider buttons (rendered inside main_content) ─
     // Hide them since we show our own social buttons above
     .potentialidps,
@@ -634,7 +689,7 @@ body.path-login {
 // ── Shared card base ─────────────────────────────────────────────────────────
 .logini-card {
     position: absolute;
-    background: #fff;
+    background: var(--logini-surface-bright);
     border-radius: 1rem;
     box-shadow: 0 20px 60px rgba(0,0,0,.25);
     color: var(--logini-on-surface);

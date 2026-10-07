@@ -130,4 +130,3 @@ $string['card_role']                  = 'Basic M...';
 $string['dont_have_account']          = 'Don\'t have an account?';
 $string['sign_up']                    = 'Sign Up';
 $string['cookie_privacy_notice']      = 'Your privacy is important to us. By continuing, you agree to our use of cookies.';
-$string['toggle_password_visibility'] = 'Toggle password visibility';

@@ -24,8 +24,6 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$PAGE->requires->css(new moodle_url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'));
-
 $bodyattributes = $OUTPUT->body_attributes();
 
 $languagemenu = new \core\output\language_menu($PAGE);
@@ -173,6 +171,7 @@ $templatecontext = [
     // Right panel visibility.
     'loginhidecards'      => !empty($s->loginhidecards),
     'loginhideslider'     => !empty($s->loginhideslider) || !$hasanyslides,
+    'demoavatarurl'       => $OUTPUT->image_url('demo_avatar', 'theme_logini')->out(false),
 
     // Floating course card text.
     'logincardcourse'     => !empty($s->logincardcourse)

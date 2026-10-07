@@ -39,9 +39,14 @@ function theme_logini_get_main_scss_content($theme) {
     // No pre.scss in logini to keep it simple, but we could add it if needed.
     // $scss .= file_get_contents($CFG->dirroot . '/theme/logini/scss/logini/pre.scss');.
 
-    if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_logini', 'preset', 0, '/', $filename))) {
+    if ($filename === 'default.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
+    } else if ($filename === 'plain.scss') {
+        $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/plain.scss');
+    } else if ($filename && ($presetfile = $fs->get_file($context->id, 'theme_logini', 'preset', 0, '/', $filename))) {
         $scss .= $presetfile->get_content();
     } else {
+        // Safety fallback.
         $scss .= file_get_contents($CFG->dirroot . '/theme/boost/scss/preset/default.scss');
     }
 

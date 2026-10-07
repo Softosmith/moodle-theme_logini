@@ -30,7 +30,7 @@ From the settings page, you can configure branding, customize the login page lay
 
 ## Requirements
 
-- Moodle 5.0 to 5.2 (Requires version `2025041400` or above).
+- Moodle 5.0 to 5.3 (LTS) (Requires version `2025041400` or above).
 - Theme Boost (Core).
 
 ## License

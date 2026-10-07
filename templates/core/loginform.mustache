@@ -143,15 +143,10 @@
             </div>
             <div class="login-form-password mb-3">
                 <label for="password" class="visually-hidden">{{#str}} password {{/str}}</label>
-                <div class="logini-password-wrap">
-                    <input type="password" name="password" id="password" value="" {{!
-                        !}}class="form-control form-control-lg" {{!
-                        !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
-                        !}}autocomplete="current-password">
-                    <button type="button" class="logini-password-toggle" aria-label="{{#str}} toggle_password_visibility, theme_logini {{/str}}">
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </button>
-                </div>
+                <input type="password" name="password" id="password" value="" {{!
+                    !}}class="form-control form-control-lg" {{!
+                    !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
+                    !}}autocomplete="current-password">
             </div>
             {{#recaptcha}}
                 <div class="login-form-recaptcha mb-3">
@@ -187,6 +182,12 @@
             {{/identityproviders}}
         </div>
     {{/hasidentityproviders}}
+    {{#hasinstructions}}
+        <div class="login-instructions mb-3">
+            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
+            {{{instructions}}}
+        </div>
+    {{/hasinstructions}}
     {{#canloginasguest}}
         <div class="logini-or-divider">
             <div class="logini-or-line"></div>
@@ -261,22 +262,11 @@
             }, 500);
         }
     });
-    (function() {
-        var toggle = document.querySelector('.logini-password-toggle');
-        var input = document.getElementById('password');
-        if (toggle && input) {
-            toggle.addEventListener('click', function() {
-                var icon = toggle.querySelector('i');
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    icon.className = 'fa fa-eye-slash';
-                } else {
-                    input.type = 'password';
-                    icon.className = 'fa fa-eye';
-                }
-            });
-        }
-    })();
+    {{#togglepassword}}
+        require(['core/togglesensitive'], function(ToggleSensitive) {
+            ToggleSensitive.init("password", {{smallscreensonly}});
+        });
+    {{/togglepassword}}
     require(['core_form/submit'], function(Submit) {
         Submit.init("loginbtn");
         {{#canloginasguest}}
